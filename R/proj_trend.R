@@ -36,14 +36,7 @@ proj_trend <- function(proj_output,
     stop("Start year of prediction is too far in advance, choose a year no more than 1 year more than maximum year of data")
   }
 
-  if("trend_end_year" %in% names(trend_output)){
     trend_end_years <- unique(trend_output$trend_end_year)
-  }else{
-    trend_end_years <- max(proj_output$year)
-    trend_output <- trend_output %>%
-      dplyr::mutate(trend_end_year = trend_end_years)
-  }
-  # generate a table for inputs
 
 
   pred_inds_start_yr <- proj_output %>%
