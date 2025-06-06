@@ -13,7 +13,8 @@ plot_trend(
   ref_yr = 2014,
   targets = NULL,
   set_upperlimit = TRUE,
-  upperlimit = 1.5
+  upperlimit = 1.5,
+  annual_variation = FALSE
 )
 }
 \arguments{
@@ -21,7 +22,7 @@ plot_trend(
 
 \item{model_indices}{tibble of estimated indices drawn from fit_* function. Columns are draw, year, and proj_y}
 
-\item{pred_indices}{datatable with modeled and predicted values into the future}
+\item{pred_indices}{datatable with modeled and projected values into the future}
 
 \item{start_yr}{numeric value of the first year in which trend will be calculated. Default is first available year within the dataset}
 
@@ -34,6 +35,8 @@ plot_trend(
 \item{set_upperlimit}{logical default is TRUE. Should the upper limit of the plot be restricted to some function of the range of the original data (only relevant when projections are strongly positive)}
 
 \item{upperlimit}{numeric default is 1.5, The factor increase above the highest upper credible limit of the annual values of either the raw_indices or model_indices}
+
+\item{annual_variation}{logical plot the projections that capture some of the annual variation in rate of change. If FALSE (default), then a single mean projection and uncertainty bound are plotted, if TRUE and pred_indices represent a collection of annual projections (i.e., trends were estiamted using get_trend(..., annual_variation = TRUE)), then multiple annual projections will be plotted, each with an associated uncertainty bound. For example, if start_yr = 2012 and end_yr = 2022, then there will be 10 sets of annual trend projections (2012:2013, 2013:2014, etc.)}
 }
 \value{
 plot
